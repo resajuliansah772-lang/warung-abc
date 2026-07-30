@@ -1,6 +1,6 @@
 <?php
 //dashboard.php
-include 'include/cek_session.php';
+include 'includes/cek_session.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@ include 'include/cek_session.php';
 </head>
 <body>
     <h1>Selamat Datang, <?php echo $_SESSION['nama_lengkap']; ?></h1>
-    <p? Anda login sebagai: <?php echo $_SESSION['role']; ?></p>
-    <a herf="logout.php">Logout</a>
+    <p> Anda login sebagai: <?php echo $_SESSION['role']; ?></p>
+    <a href="logout.php">Logout</a>
 </body>
 </html>

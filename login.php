@@ -14,7 +14,7 @@
     }
     ?>
 
-    <from action="proses_login.php" method="POST">
+    <form action="proses_login.php" method="POST">
         <table>
             <tr>
                 <td>Username</td>
@@ -32,6 +32,6 @@
                 </td>
             </tr>
         </table>
-    </from>
+    </form>
 </body>
 </html>
