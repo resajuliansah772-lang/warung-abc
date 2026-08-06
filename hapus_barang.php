@@ -6,10 +6,10 @@ include 'config/koneksi.php';
 
 $id = $_GET['id'];
 
-$cek = mysqli_query($koneksi, "SELECT nama_barang FROM tbl_barang WHERE id_barang = '$id'");
+$cek = mysqli_query($koneksi, "SELECT nama_barang FROM tbl_barang WHERE id_barang ='$id'");
 $data = mysqli_fetch_assoc($cek);
 
-$sql = "DELETE FROM tbl_barang WHERE id_barang = '$id'";
+$sql = "DELETE FROM tbl_barang WHERE id_barang ='$id'";
 
 if (mysqli_query($koneksi, $sql)) {
     $id_user = $_SESSION['id_user'];

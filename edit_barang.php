@@ -3,7 +3,6 @@
 include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
-
 $id = $_GET['id'];
 $sql = "SELECT * FROM tbl_barang WHERE id_barang = '$id'";
 $hasil = mysqli_query($koneksi, $sql);
@@ -15,7 +14,7 @@ $data = mysqli_fetch_assoc($hasil);
 <body>
     <h1>Edit Barang</h1>
     <form action="proses_edit_barang.php" method="POST">
-        <input type="hidden" name="id_barang" value="<?php echo &data['id_barang']; ?>">
+        <input type="hidden" name="id_barang" value="<?php echo $data['id_barang']; ?>">
         <table>
             <tr><td>Kode Barang</td><td>:</td>
                 <td><input type="text" name="kode_barang"
@@ -33,7 +32,7 @@ $data = mysqli_fetch_assoc($hasil);
                 <td><input type="date" name="tanggal_kadaluarsa"
                     value="<?php echo $data['tanggal_kadaluarsa']; ?>"></td></tr>
             <tr><td colspan="3"><input type="submit" value="Update"></td></tr>
-    </table>
+        </table>
     </form>
     <p><a herf="data_barang.php">Kembali</a></p>
 </body>
