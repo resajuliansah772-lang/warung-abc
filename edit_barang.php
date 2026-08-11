@@ -34,6 +34,6 @@ $data = mysqli_fetch_assoc($hasil);
             <tr><td colspan="3"><input type="submit" value="Update"></td></tr>
         </table>
     </form>
-    <p><a herf="data_barang.php">Kembali</a></p>
+    <p><a href="data_barang.php">Kembali</a></p>
 </body>
 </html>
