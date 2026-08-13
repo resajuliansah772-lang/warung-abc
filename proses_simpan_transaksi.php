@@ -10,6 +10,24 @@ if (empty($_SESSION['keranjang'])) {
 }
 
 $id_kasir = $_SESSION['id_user'];
+$id_pelanggan = !empty($_POST['id_pelanggan']) ? (int) $_POST['id_pelanggan'] : null;
+$id_pelanggan_sql = $id_pelanggan === null ? 'NULL' : "'$id_pelanggan'";
+
+$no_transaksi = 'TRX-' . date('YmdHis');
+$tanggal = date('Y-m-d H:i:s');
+$total = 0;
+
+foreach ($_SESSION['keranjang'] as $item) {
+    $total += $item['subtotal'];
+}
+
+$sql = "INSERT INTO tbl_transaksi (no_transaksi, tanggal, id_kasir, id_pelanggan, total_bayar)";
+$sql .= "VALUES ('$no_transaksi', '$tanggal', '$id_kasir', $id_pelanggan_sql, '$total')";
+
+mysqli_query($koneksi, $sql);
+$id_transakasi = mysqli_insert_id($koneksi);
+
+$id_kasir = $_SESSION['id_user'];
 $no_transaksi = 'TRX-' . date('YmdHis');
 $tanggal = date('Y-m-d H:i:s');
 

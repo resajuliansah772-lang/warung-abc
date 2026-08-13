@@ -13,13 +13,14 @@ $total = 0;
 foreach ($_SESSION['keranjang'] as $item) {
     $total += $item['subtotal'];
 }
+    $sql_pelanggan = "SELECT * FROM tbl_pelanggan ORDER BY nama_pelanggan ASC";
+    $hasil_pelanggan = mysqli_query($koneksi, $sql_pelanggan);
+
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaksi - Warung ABC</title>
 
     <style>
@@ -152,9 +153,18 @@ if (isset($_SESSION['pesan_error'])) {
 
     Jumlah:
     <input type="number" name="jumlah" min="1" required>
-
     <input type="submit" value="Tambah ke Keranjang">
-
+</form>
+<form action="proses_simpan_transaksi.php" method="POST">
+    Pelanggan:
+    <select name="id_pelanggan">
+        <option value="">--Pelanggan Umum --</option>
+        <?php while ($p = mysqli_fetch_assoc($hasil_pelanggan)) { ?>
+        <option value="<?php echo $p['id_pelanggan']; ?>">
+            <?php echo $p['nama_pelanggan']; ?></option>
+        <?php } ?>
+    </select>
+    <input type="submit" value="Simpan Transaksi">
 </form>
 
 
