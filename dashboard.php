@@ -25,6 +25,7 @@ body{
 
 
 /* NAVBAR */
+
 .navbar{
     background:linear-gradient(135deg,#1b5e20,#4caf50);
     padding:20px 40px;
@@ -130,7 +131,7 @@ body{
 
 
 
-/* MENU CARD */
+/* MENU */
 
 .menu{
 
@@ -139,13 +140,15 @@ body{
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(250px,1fr));
+    repeat(3,1fr);
 
     gap:25px;
 
 }
 
 
+
+/* CARD */
 
 .card{
 
@@ -166,8 +169,17 @@ body{
 
     overflow:hidden;
 
-}
+    height:185px;
 
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
 
 
 .card::before{
@@ -177,9 +189,11 @@ body{
     position:absolute;
 
     width:100%;
+
     height:5px;
 
     top:0;
+
     left:0;
 
     background:#4caf50;
@@ -190,8 +204,7 @@ body{
 
 .card:hover{
 
-    transform:
-    translateY(-10px);
+    transform:translateY(-10px);
 
     box-shadow:
     0 15px 30px rgba(0,0,0,.2);
@@ -210,6 +223,8 @@ body{
 
     font-weight:bold;
 
+    display:block;
+
 }
 
 
@@ -222,8 +237,65 @@ body{
 
     font-size:15px;
 
+    line-height:1.5;
+
 }
 
+
+
+/* ============================= */
+/* LAPORAN HARIAN */
+/* ============================= */
+
+.card.laporan-harian{
+
+    grid-column:1;
+
+    grid-row:2;
+
+}
+
+
+
+/* ============================= */
+/* LAPORAN BULANAN */
+/* ============================= */
+
+.card.laporan-bulanan{
+
+    grid-column:2;
+
+    grid-row:2;
+
+}
+
+
+
+/* ============================= */
+/* ICON LAPORAN */
+/* ============================= */
+
+.laporan-icon{
+
+    width:50px;
+
+    height:50px;
+
+    margin-bottom:10px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:25px;
+
+    background:#e8f5e9;
+
+}
 
 
 
@@ -246,6 +318,37 @@ footer{
 
 
 /* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .menu{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+
+    .card.laporan-harian{
+
+        grid-column:1;
+
+        grid-row:3;
+
+    }
+
+
+    .card.laporan-bulanan{
+
+        grid-column:2;
+
+        grid-row:3;
+
+    }
+
+}
+
+
 
 @media(max-width:600px){
 
@@ -273,6 +376,30 @@ footer{
     .welcome h1{
 
         font-size:22px;
+
+    }
+
+
+    .menu{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .card{
+
+        height:185px;
+
+    }
+
+
+    .card.laporan-harian,
+    .card.laporan-bulanan{
+
+        grid-column:auto;
+
+        grid-row:auto;
 
     }
 
@@ -318,7 +445,6 @@ footer{
     </div>
 
 
-
     <div class="menu">
 
 
@@ -335,9 +461,8 @@ footer{
             </p>
 
         </div>
-
+    
         <?php } ?>
-
 
 
         <?php if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'kasir') { ?>
@@ -356,7 +481,6 @@ footer{
         </div>
 
 
-
         <div class="card">
 
             <a href="riwayat_transaksi.php">
@@ -370,23 +494,54 @@ footer{
         </div>
 
 
-        <?php } ?>
+        <!-- LAPORAN HARIAN -->
 
+        <div class="card laporan-harian">
+
+            <div class="laporan-icon">
+                📊
+            </div>
+
+            <a href="laporan_harian.php">
+                Laporan Harian
+            </a>
+
+            <p>
+                Lihat seluruh laporan transaksi harian.
+            </p>
+
+        </div>
+
+
+        <!-- LAPORAN BULANAN -->
+
+        <div class="card laporan-bulanan">
+
+            <div class="laporan-icon">
+                📈
+            </div>
+
+            <a href="laporan_bulanan.php">
+                Laporan Bulanan
+            </a>
+
+            <p>
+                Lihat seluruh laporan transaksi bulanan.
+            </p>
+
+        </div>
+
+
+        <?php } ?>
 
     </div>
 
-
 </div>
-
-
 
 <footer>
 
-© <?php echo date("Y"); ?> Sistem Kasir Warung ABC
+    © <?php echo date("Y"); ?> Sistem Kasir Warung ABC
 
 </footer>
-
-
-
 </body>
 </html>
