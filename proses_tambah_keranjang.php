@@ -1,7 +1,7 @@
 <?php
 // proses_tambah_keranjang.php
 session_start();
-include 'incluses/cek_session';
+include 'includes/cek_session.php';
 include 'config/koneksi.php';
 
 if (!isset($_SESSION['keranjang'])) {
